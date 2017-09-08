@@ -1,9 +1,12 @@
-// // event listener to respond to "Show another quote" button clicks
-// // when user clicks anywhere on the button, the "printQuote" function is called
-//
-var selected1 = document.getElementById("selected");
-var numbers = [0,1,2,3,4];
-const quote_box = document.getElementById("quote-box");
+
+
+var selected1 = document.getElementById("selected"); //Get select element from DOM
+var numbers = [0,1,2,3,4];//Random number are picked from this arry
+const quote_box = document.getElementById("quote-box"); //Get div from DOM
+
+/*******************+
+  QUOTES LIST
+********************/
 const quotes = {"inspirational":[
   {
     "quote": "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.",
@@ -74,6 +77,8 @@ const quotes = {"inspirational":[
 ]
 }
 
+
+//Pick up random quote, add DOM paragraph element, change background color on clikc
 function printQuote() {
   var random = getRandomQuote();
   var red = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
@@ -96,14 +101,17 @@ function printQuote() {
   quote_box.innerHTML = html;
 }
 
+//Pick up random quote on button click
 document.getElementById('loadQuote').addEventListener("click", printQuote, true);
 
+//Auto pick quotes every 10 seconds
 var intervalID = window.setInterval(printQuote, 10000);
 
+//Choose no-repeat random numbers
 var getRandomQuote = function () {
   if (numbers.length === 0) {
     numbers = [0,1,2,3,4];
-  }
+    }
   var number =  Math.floor(Math.random() * (4 - 0 + 1)) + 0;
   if(numbers.indexOf(number) > -1){
     numbers.splice(numbers.indexOf(number),1);
